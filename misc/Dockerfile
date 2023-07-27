@@ -3,8 +3,9 @@ FROM alpine:latest
 MAINTAINER go.kscripting@gmail.com
 
 ARG KSCRIPT_VERSION=4.1.1
-ARG KOTLIN_VERSION=1.7.21
+ARG KOTLIN_VERSION=1.9.20-dev-7955
 
+COPY kotlin-compiler-${KOTLIN_VERSION}.zip /tmp/
 RUN \
 # Install bash & Java \
 apk add bash openjdk11 && \
@@ -19,8 +20,7 @@ cd $(mktemp -d) && \
     chmod a+x /usr/local/bin/kscript && \
 \
 # Install Kotlin
-    wget https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip -q -O - | \
-    unzip - && \
+    unzip /tmp/kotlin-compiler-${KOTLIN_VERSION}.zip && \
     chmod a+x kotlinc/bin/kotlin kotlinc/bin/kotlinc && \
     mv kotlinc /opt && \
 \

@@ -36,18 +36,19 @@ class GradleTemplatesTest {
         assertThat(scriptText).isEqualTo(
             """
             |plugins {
-            |    id("org.jetbrains.kotlin.jvm") version "1.7.21"
+            |    id("org.jetbrains.kotlin.jvm") version "1.9.20"
             |}
             |
             |repositories {
             |    mavenLocal()
             |    mavenCentral()
+            |    maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
             |    
             |}
             |
             |dependencies {
             |    implementation("org.jetbrains.kotlin:kotlin-stdlib")
-            |    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.7.21")
+            |    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.9.20")
             |    implementation("io.github.kscripting:kscript-annotations:1.5.0")
             |}
             |
@@ -87,12 +88,13 @@ class GradleTemplatesTest {
         assertThat(scriptText).isEqualTo(
             """
             |plugins {
-            |    id("org.jetbrains.kotlin.jvm") version "1.7.21"
+            |    id("org.jetbrains.kotlin.jvm") version "1.9.20"
             |}
             |
             |repositories {
             |    mavenLocal()
             |    mavenCentral()
+            |    maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
             |    maven {
             |        url = uri("https://url1")
             |        credentials {
@@ -111,7 +113,7 @@ class GradleTemplatesTest {
             |
             |dependencies {
             |    implementation("org.jetbrains.kotlin:kotlin-stdlib")
-            |    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.7.21")
+            |    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.9.20")
             |    implementation("io.github.kscripting:kscript-annotations:1.5.0")
             |}
             |

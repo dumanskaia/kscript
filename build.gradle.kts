@@ -4,10 +4,10 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
 
-val kotlinVersion: String = "1.7.21"
+val kotlinVersion: String = "1.9.20-dev-7955"
 
 plugins {
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.9.20-dev-7955"
     application
     id("com.adarshr.test-logger") version "3.2.0"
     id("com.github.gmazzo.buildconfig") version "3.1.0"
@@ -20,7 +20,7 @@ plugins {
 repositories {
     mavenCentral()
     mavenLocal()
-
+    maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
     maven {
         url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
     }
@@ -279,6 +279,7 @@ publishing {
                 password = project.findProperty("sonatype.password") as String? ?: System.getenv("SONATYPE_PASSWORD")
             }
         }
+        maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
     }
 }
 

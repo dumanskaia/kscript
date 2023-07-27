@@ -23,6 +23,7 @@ object GradleTemplates {
             |repositories {
             |    mavenLocal()
             |    mavenCentral()
+            |    maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
             |${createGradleRepositoriesSection(script.repositories).prependIndent()}
             |}
             |
@@ -63,6 +64,7 @@ object GradleTemplates {
             |repositories {
             |    mavenLocal()
             |    mavenCentral()
+            |    maven { setUrl("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev") }
             |${createGradleRepositoriesSection(script.repositories).prependIndent()}
             |}
             |
