@@ -23,7 +23,7 @@ class CommandResolverTest {
         val commandResolver = CommandResolver(config.osConfig)
 
         assertThat(commandResolver.compileKotlin(jarPath, depPaths, filePaths, compilerOpts)).isEqualTo(
-            """"C:\Users\Admin With Spaces\scoop\apps\kotlin\current\bin\kotlinc.bat" -abc -def --experimental -classpath "C:\My Workspace\Code\.m2\somepath\dep1.jar;C:\My Workspace\Code\.m2\somepath\dep2.jar;C:\My Workspace\Code\.m2\somepath\dep3.jar" -d "C:\My Workspace\Code\.kscript\cache\somefile.jar" "C:\My Workspace\Code\source\somepath\dep1.kt" "C:\My Workspace\Code\source\somepath\dep2.kts""""
+            """"C:\Users\Admin With Spaces\scoop\apps\kotlin\current\bin\kotlinc.bat" -abc -def --experimental -language-version 2.0 -Xuse-fir-lt=false -classpath "C:\My Workspace\Code\.m2\somepath\dep1.jar;C:\My Workspace\Code\.m2\somepath\dep2.jar;C:\My Workspace\Code\.m2\somepath\dep3.jar" -d "C:\My Workspace\Code\.kscript\cache\somefile.jar" "C:\My Workspace\Code\source\somepath\dep1.kt" "C:\My Workspace\Code\source\somepath\dep2.kts""""
         )
 
         assertThat(commandResolver.executeKotlin(jarArtifact, depPaths, userArgs, kotlinOpts)).isEqualTo(
@@ -41,7 +41,7 @@ class CommandResolverTest {
         val commandResolver = CommandResolver(config.osConfig)
 
         assertThat(commandResolver.compileKotlin(jarPath, depPaths, filePaths, compilerOpts)).isEqualTo(
-            """/usr/local/kotlin/bin/kotlinc -abc -def --experimental -classpath '/home/vagrant/.m2/somepath/dep1.jar:/home/vagrant/.m2/somepath/dep2.jar:/home/vagrant/.m2/somepath/dep3.jar' -d '/home/vagrant/.kscript/cache/somefile.jar' '/home/vagrant/source/somepath/dep1.kt' '/home/vagrant/source/somepath/dep2.kts'"""
+            """/usr/local/kotlin/bin/kotlinc -abc -def --experimental -language-version 2.0 -Xuse-fir-lt=false -classpath '/home/vagrant/.m2/somepath/dep1.jar:/home/vagrant/.m2/somepath/dep2.jar:/home/vagrant/.m2/somepath/dep3.jar' -d '/home/vagrant/.kscript/cache/somefile.jar' '/home/vagrant/source/somepath/dep1.kt' '/home/vagrant/source/somepath/dep2.kts'"""
         )
 
         assertThat(commandResolver.executeKotlin(jarArtifact, depPaths, userArgs, kotlinOpts)).isEqualTo(
@@ -59,7 +59,7 @@ class CommandResolverTest {
         val commandResolver = CommandResolver(config.osConfig)
 
         assertThat(commandResolver.compileKotlin(jarPath, depPaths, filePaths, compilerOpts)).isEqualTo(
-            """/c/My Home/kotlin/bin/kotlinc -abc -def --experimental -classpath 'c:\My Workspace\.m2\somepath\dep1.jar;c:\My Workspace\.m2\somepath\dep2.jar;c:\My Workspace\.m2\somepath\dep3.jar' -d 'c:\My Workspace\.kscript\cache\somefile.jar' 'c:\My Workspace\source\somepath\dep1.kt' 'c:\My Workspace\source\somepath\dep2.kts'"""
+            """/c/My Home/kotlin/bin/kotlinc -abc -def --experimental -language-version 2.0 -Xuse-fir-lt=false -classpath 'c:\My Workspace\.m2\somepath\dep1.jar;c:\My Workspace\.m2\somepath\dep2.jar;c:\My Workspace\.m2\somepath\dep3.jar' -d 'c:\My Workspace\.kscript\cache\somefile.jar' 'c:\My Workspace\source\somepath\dep1.kt' 'c:\My Workspace\source\somepath\dep2.kts'"""
         )
 
         assertThat(commandResolver.executeKotlin(jarArtifact, depPaths, userArgs, kotlinOpts)).isEqualTo(
@@ -77,7 +77,7 @@ class CommandResolverTest {
         val commandResolver = CommandResolver(config.osConfig)
 
         assertThat(commandResolver.compileKotlin(jarPath, depPaths, filePaths, compilerOpts)).isEqualTo(
-            """/cygdrive/c/My Home/kotlin/bin/kotlinc -abc -def --experimental -classpath 'c:\My Workspace\.m2\somepath\dep1.jar;c:\My Workspace\.m2\somepath\dep2.jar;c:\My Workspace\.m2\somepath\dep3.jar' -d 'c:\My Workspace\.kscript\cache\somefile.jar' 'c:\My Workspace\source\somepath\dep1.kt' 'c:\My Workspace\source\somepath\dep2.kts'"""
+            """/cygdrive/c/My Home/kotlin/bin/kotlinc -abc -def --experimental -language-version 2.0 -Xuse-fir-lt=false -classpath 'c:\My Workspace\.m2\somepath\dep1.jar;c:\My Workspace\.m2\somepath\dep2.jar;c:\My Workspace\.m2\somepath\dep3.jar' -d 'c:\My Workspace\.kscript\cache\somefile.jar' 'c:\My Workspace\source\somepath\dep1.kt' 'c:\My Workspace\source\somepath\dep2.kts'"""
         )
 
         assertThat(commandResolver.executeKotlin(jarArtifact, depPaths, userArgs, kotlinOpts)).isEqualTo(

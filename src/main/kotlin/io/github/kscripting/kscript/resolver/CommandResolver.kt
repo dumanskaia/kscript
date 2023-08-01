@@ -46,7 +46,10 @@ class CommandResolver(val osConfig: OsConfig) {
     fun compileKotlin(
         jar: OsPath, dependencies: Set<OsPath>, filePaths: Set<OsPath>, compilerOpts: Set<CompilerOpt>
     ): String {
-        val compilerOptsStr = resolveCompilerOpts(compilerOpts)
+        val compilerOptsForK2 = compilerOpts.toMutableSet()
+        compilerOptsForK2.add(CompilerOpt("-language-version 2.0"))
+        compilerOptsForK2.add(CompilerOpt("-Xuse-fir-lt=false"))
+        val compilerOptsStr = resolveCompilerOpts(compilerOptsForK2)
         val classpath = resolveClasspath(dependencies)
         val jarFile = resolveJarFile(jar)
         val files = resolveFiles(filePaths)
