@@ -11,7 +11,6 @@ import kotlinx.coroutines.runBlocking
 import kotlin.collections.set
 import kotlin.script.experimental.api.valueOr
 import kotlin.script.experimental.dependencies.CompoundDependenciesResolver
-import kotlin.script.experimental.dependencies.ExternalDependenciesResolver
 import kotlin.script.experimental.dependencies.FileSystemDependenciesResolver
 import kotlin.script.experimental.dependencies.RepositoryCoordinates
 import kotlin.script.experimental.dependencies.impl.makeExternalDependenciesResolverOptions
@@ -30,10 +29,10 @@ class DependencyResolver(private val customRepos: Set<Repository>) {
             infoMsg("Adding repository: $it")
 
             //Adding custom repository removes MavenCentral, so it must be re-added below
-            addRepository(RepositoryCoordinates(it.url), makeExternalDependenciesResolverOptions(options), null)
+            addRepository(RepositoryCoordinates(it.url), makeExternalDependenciesResolverOptions(options))
         }
 
-        addRepository(RepositoryCoordinates("https://repo.maven.apache.org/maven2"), ExternalDependenciesResolver.Options.Empty, sourceCodeLocation = null)
+        addRepository(RepositoryCoordinates("https://repo.maven.apache.org/maven2"))
     }
 
     private val resolver = CompoundDependenciesResolver(FileSystemDependenciesResolver(), mvnResolver)
@@ -43,7 +42,7 @@ class DependencyResolver(private val customRepos: Set<Repository>) {
             depIds.map {
                 infoMsg("Resolving ${it.value}...")
                 val start = System.currentTimeMillis()
-                val resolved = resolver.resolve(it.value, ExternalDependenciesResolver.Options.Empty, sourceCodeLocation = null)
+                val resolved = resolver.resolve(it.value)
                 devMsg("Resolved in: ${System.currentTimeMillis() - start}")
                 resolved
             }

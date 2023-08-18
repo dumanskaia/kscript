@@ -3,7 +3,6 @@ package io.github.kscripting.kscript.resolver
 import java.io.File
 import kotlin.script.experimental.api.valueOrNull
 import kotlin.script.experimental.dependencies.CompoundDependenciesResolver
-import kotlin.script.experimental.dependencies.ExternalDependenciesResolver
 import kotlin.script.experimental.dependencies.FileSystemDependenciesResolver
 import kotlin.script.experimental.dependencies.RepositoryCoordinates
 import kotlin.script.experimental.dependencies.maven.MavenDependenciesResolver
@@ -18,7 +17,7 @@ suspend fun main() {
     }
 
     val mvnResolver = MavenDependenciesResolver().apply {
-        addRepository(RepositoryCoordinates("https://repo.maven.apache.org/maven2"), sourceCodeLocation = null)
+        addRepository(RepositoryCoordinates("https://repo.maven.apache.org/maven2"))
     }
 
     val resolver = CompoundDependenciesResolver(FileSystemDependenciesResolver(), mvnResolver)
