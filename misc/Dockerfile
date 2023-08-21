@@ -3,7 +3,7 @@ FROM alpine:latest
 MAINTAINER go.kscripting@gmail.com
 
 ARG KSCRIPT_VERSION=4.1.1
-ARG KOTLIN_VERSION=1.9.20-dev-7955
+ARG KOTLIN_VERSION=1.9.30-dev-833
 
 COPY kotlin-compiler-${KOTLIN_VERSION}.zip /tmp/
 RUN \

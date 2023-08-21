@@ -4,10 +4,10 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
 
-val kotlinVersion: String = "1.9.20-dev-7955"
+val kotlinVersion: String = "1.9.30-dev-833"
 
 plugins {
-    kotlin("jvm") version "1.9.20-dev-7955"
+    kotlin("jvm") version "1.9.30-dev-833"
     application
     id("com.adarshr.test-logger") version "3.2.0"
     id("com.github.gmazzo.buildconfig") version "3.1.0"
